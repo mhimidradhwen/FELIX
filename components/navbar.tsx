@@ -25,7 +25,7 @@ const Navbar = () => {
           <div className="flex">
             <Link href="/" className="flex items-center">
               <Brain className="h-8 w-8 text-primary" />
-              <span className="ml-2 text-xl font-bold">NeuroScan AI</span>
+              <span className="ml-2 text-xl font-bold">FELIX AI</span>
             </Link>
           </div>
 

@@ -96,26 +96,50 @@ export default function TryModel() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!audioFile) {
       toast({
         title: "Error",
         description: "Please record or upload an audio file",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
-
-    setIsLoading(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-    setIsLoading(false)
-
-    toast({
-      title: "Analysis Complete",
-      description: "The voice sample has been analyzed successfully. Results are ready.",
-    })
-  }
+  
+    setIsLoading(true);
+  
+    const formData = new FormData();
+    formData.append('file', audioFile);
+  
+    try {
+      const response = await fetch('http://127.0.0.1:5001/predict', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const result = await response.json();
+      // Handle the result returned by your Flask app
+      console.log(result);
+  
+      toast({
+        title: "Analysis Complete",
+        description: result.message,
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "An error occurred while analyzing the voice sample.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-[calc(100vh-4rem)] py-12">
@@ -182,18 +206,12 @@ export default function TryModel() {
                       <Button
                         type="button"
                         variant="outline"
-                        size="icon"
                         onClick={togglePlayback}
+                        disabled={isLoading}
                       >
-                        {isPlaying ? (
-                          <Pause className="h-4 w-4" />
-                        ) : (
-                          <Play className="h-4 w-4" />
-                        )}
+                        {isPlaying ? <Pause className="mr-2" /> : <Play className="mr-2" />}
+                        {isPlaying ? "Pause" : "Play"}
                       </Button>
-                      <p className="text-sm text-muted-foreground">
-                        {isPlaying ? "Pause" : "Play"} Recording
-                      </p>
                     </div>
                   )}
                 </div>

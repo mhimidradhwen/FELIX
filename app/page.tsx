@@ -9,8 +9,8 @@ export default function Home() {
       <section className="relative py-20 bg-gradient-to-b from-primary/10 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Early Detection Through{" "}
-            <span className="text-primary">Voice Analysis</span>
+             Detection of alzehimer{" "}
+            <span className="text-primary">with Voice Analysis</span>
           </h1>
           <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto">
             Using advanced AI technology to detect early signs of Alzheimer's

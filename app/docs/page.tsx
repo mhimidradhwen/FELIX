@@ -14,7 +14,7 @@ export default function Documentation() {
         </div>
 
         <Tabs defaultValue="getting-started" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-1 md:grid-cols-4">
+          <TabsList className="grid w-full grid-cols-1 md:grid-cols-4 h-full">
             <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
             <TabsTrigger value="technical">Technical Details</TabsTrigger>
             <TabsTrigger value="guidelines">Usage Guidelines</TabsTrigger>
