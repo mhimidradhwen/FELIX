@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NeuroScan AI - Alzheimer\'s Detection',
+  title: 'FELIX AI - Alzheimer\'s Detection',
   description: 'Advanced AI-powered platform for early Alzheimer\'s detection and analysis',
 };
 
